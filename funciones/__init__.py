@@ -9,4 +9,6 @@ from .ingresar_ventas import ingresar_ventas
 from .mostrar_listado import mostrar_listado
 from .productos_mas_vendidos import productos_mas_vendidos
 from .sin_ventas import productos_sin_ventas
-from .util import guardar_json, mostar_tabla_provincias
+from .util import guardar_json, mostar_tabla_provincias, abrir_json
+from .eliminar_cliente import eliminar_clientes
+from .eliminar_producto import eliminar_productos

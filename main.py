@@ -15,7 +15,9 @@ def menu():
         "Calcular y mostrar el total facturado por cliente.",
         "Mostrar los productos más vendidos.",
         "Generar un resumen de facturación por provincia.",
-        "Listar productos sin ventas.\n",
+        "Listar productos sin ventas.",
+        "Eliminar productos sin ventas",
+        "Eliminar clientes sin ventas\n",
         "Guardar",
         "Salir"
     ]
@@ -49,6 +51,10 @@ def menu():
         case 10:
             productos_sin_ventas(ventas, catalogo)
         case 11:
+            catalogo = eliminar_productos(catalogo, clientes)
+        case 12:
+            clientes = eliminar_clientes(clientes, ventas)
+        case 13:
             filepath = path.join(getcwd(), 'guardar')
 
             file_ventas = path.join(filepath, 'ventas.json')
@@ -62,7 +68,7 @@ def menu():
             if clientes is not None:
                 guardar_json(file_clientes, clientes)
 
-        case 12:
+        case 14:
             return False
     return True
 
@@ -75,6 +81,14 @@ if __name__ == "__main__":
     ventas = {}
     catalogo = []
     clientes = []
-    while continuar is True:
+    for name in ['catalogo', 'clientes', 'ventas']:
+        subruta = path.join(ruta, name + '.json')
+        if path.exists(subruta):
+            if name == "catalogo":
+                catalogo = abrir_json(subruta)
+            elif name == 'clientes':
+                clientes = abrir_json(subruta)
+            elif name == 'ventas':
+                ventas = abrir_json(subruta)
+    while continuar:
         continuar = menu()
-

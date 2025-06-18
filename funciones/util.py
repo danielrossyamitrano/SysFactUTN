@@ -1,10 +1,13 @@
-from json import dump
+from json import dump, load
 
 
 def guardar_json(filename, datos):
     with open(filename, mode='wt', encoding="utf-8") as file:
         dump(datos, file, indent=2, ensure_ascii=False)
 
+def abrir_json(filepath):
+    with open(filepath, mode="rt", encoding='utf-8') as file:
+        return load(file)
 
 def mostar_tabla_provincias(provincias):
     for i, provincia in enumerate(provincias, start=1):
